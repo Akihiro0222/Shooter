@@ -21,4 +21,12 @@ public class ShotMove : MonoBehaviour {
 			Destroy(gameObject);
 		}
 	}
+
+
+    void OnTriggerEnter(Collider collider)
+    {
+        Destroy(gameObject);
+    }
+
+    
 }
