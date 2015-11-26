@@ -27,6 +27,7 @@ public class LimitTime : MonoBehaviour
 			// マイナスは表示しない
 			limitTime = 0;
 			// ゲームクリア画面に遷移する
+            Application.LoadLevel("GameClear");
 		}
 
 		// 制限時間表示
