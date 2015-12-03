@@ -15,9 +15,9 @@ public class AudioManager : MonoBehaviour {
 
     //二種類の音を同時再生するために二つ用意する
     [SerializeField]
-    private AudioSource audioSource_Shot;
+    private AudioSource audioSource_Shot = null;
     [SerializeField]
-    private AudioSource audioSource_Exp;
+    private AudioSource audioSource_Exp = null;
 
 	// Use this for initialization
 	void Awake() {
