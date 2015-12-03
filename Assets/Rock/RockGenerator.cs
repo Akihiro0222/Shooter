@@ -4,9 +4,12 @@ using System.Collections;
 
 public class RockGenerator : MonoBehaviour {
 
-	public GameObject Rock1;
-	public GameObject Rock2;
-	public GameObject Rock3;
+    [SerializeField]
+    private GameObject Rock1 = null;
+    [SerializeField]
+    private GameObject Rock2 = null;
+    [SerializeField]
+    private GameObject Rock3 = null;
 
 
 	int[] EnemyTable;
@@ -29,10 +32,11 @@ public class RockGenerator : MonoBehaviour {
 	void Update () {
 
 
-
+        Count--;
 
 		//カウントがゼロになったら生成
-		if (--Count == 0) {
+		if (Count == 0) {
+
 			//敵のタイプを決める
 			int EnemyNum = EnemyTable[Random.Range(0,EnemyTable.Length)];
 
@@ -58,14 +62,15 @@ public class RockGenerator : MonoBehaviour {
 
 
 			}
+
+            //カウントがゼロになったらカウントを取り直す
+            Count = EnemyCreateFream[Random.Range(0, EnemyCreateFream.Length)];
 		}
 
 
 
 
-		//カウントがゼロになったらカウントを取り直す
-		if(Count==0)
-			Count = EnemyCreateFream[Random.Range(0,EnemyCreateFream.Length)];
+
 
 
 

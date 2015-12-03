@@ -6,7 +6,10 @@ public class RockMove : MonoBehaviour {
     //初期の出現角度
     float Dir;
 
-    public int HP;
+    
+
+    [SerializeField]
+    private int HP;
 
 	// Use this for initialization
 	void Start () {
@@ -72,9 +75,13 @@ public class RockMove : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
+        
+        HP--;
 
-        if (--HP <= 0)
+
+        if (HP <= 0)
         {
+            AudioManager.instance.PlaySoundExprotion();
             Destroy(gameObject);
         }
 

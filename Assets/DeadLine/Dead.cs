@@ -16,11 +16,4 @@ public class Dead : MonoBehaviour {
 
     }
 
-
-    void OnCollisionEnter(Collision Collision)
-    {
-
-        Application.LoadLevel("GameOver");
-
-    }
 }
