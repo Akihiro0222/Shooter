@@ -45,7 +45,7 @@ public class RockMove : MonoBehaviour {
            
 
 
-        float MoveSpeed = 0.05f;
+        const float MoveSpeed = 0.05f;
 
         //Y軸ではなくZ軸を使うため、sinはZ
         nowPos.x += Mathf.Cos(Dir * Mathf.Deg2Rad) * MoveSpeed;

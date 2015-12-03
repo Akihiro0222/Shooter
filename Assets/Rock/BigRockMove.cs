@@ -16,6 +16,7 @@ public class BigRockMove : MonoBehaviour {
     {
 
         //下方向に向かって進むので、270を基準に方向を決める
+        //ゆっくりと下に向かわせるため、幅を大きくする
         float[] DirTable = new float[] { 340.0f, 200.0f };
 
         Dir = DirTable[Random.Range(0, DirTable.Length)];
@@ -46,7 +47,7 @@ public class BigRockMove : MonoBehaviour {
 
 
 
-        float MoveSpeed = 0.03f;
+        const float MoveSpeed = 0.03f;
 
         //Y軸ではなくZ軸を使うため、sinはZ
         nowPos.x += Mathf.Cos(Dir * Mathf.Deg2Rad) * MoveSpeed;

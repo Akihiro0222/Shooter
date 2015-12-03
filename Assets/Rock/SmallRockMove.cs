@@ -5,6 +5,8 @@ public class SmallRockMove : MonoBehaviour {
 
     //初期の出現角度
     float Dir;
+
+    //sinカーブを利用したうようよする岩を作るために使用
     float Dir2;
 
 
@@ -16,7 +18,8 @@ public class SmallRockMove : MonoBehaviour {
     {
 
         //下方向に向かって進むので、270を基準に方向を決める
-        float[] DirTable = new float[] { 280.0f, 290.0f, 260.0f, 250.0f, 270.0f };
+        //画面外に出させないために少し幅を小さくする
+        float[] DirTable = new float[] { 280.0f,  260.0f, 270.0f };
 
         Dir = DirTable[Random.Range(0, DirTable.Length)];
         Dir2 = 0;
@@ -45,12 +48,12 @@ public class SmallRockMove : MonoBehaviour {
         if (nowPos.x < -2.0f)
             Dir = 270.0f + (270.0f - Dir);
 
-
+        //sinカーブのぶれ幅
         Dir2+=7f;
         if (Dir2 > 360f) Dir2 += 360f;
 
 
-        float MoveSpeed = 0.08f;
+        const float MoveSpeed = 0.08f;
 
         //Y軸ではなくZ軸を使うため、sinはZ
         nowPos.x += Mathf.Cos(Dir2 * Mathf.Deg2Rad) * 0.03f;
