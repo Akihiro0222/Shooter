@@ -6,11 +6,10 @@ public class ShotCreate : MonoBehaviour {
     [SerializeField]
 	public GameObject Shot;
 
-    GameObject Player;
 
 	// Use this for initialization
 	void Start () {
-        Player = GameObject.Find("Player");
+
 	}
 	
 	// Update is called once per frame
@@ -18,12 +17,10 @@ public class ShotCreate : MonoBehaviour {
 
 		//Cが押されたときにPlayerの座標に生成される
 		if(Input.GetKeyDown(KeyCode.C)){
-
+            //音声再生
             AudioManager.instance.PlaySoundShot();
-			Instantiate(Shot,Player.transform.position,Quaternion.identity);
-
-
-
+            //弾の生成
+			Instantiate(Shot,transform.position,Quaternion.identity);
 		}
 	}
 }

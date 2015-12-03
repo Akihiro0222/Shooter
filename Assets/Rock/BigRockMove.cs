@@ -1,24 +1,26 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RockMove : MonoBehaviour {
+public class BigRockMove : MonoBehaviour {
 
     //初期の出現角度
     float Dir;
 
-    
+
 
     [SerializeField]
     private int HP;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
 
         //下方向に向かって進むので、270を基準に方向を決める
-        float[] DirTable = new float[] { 280.0f, 290.0f, 260.0f, 250.0f, 270.0f };
+        //ゆっくりと下に向かわせるため、幅を大きくする
+        float[] DirTable = new float[] { 340.0f, 200.0f };
 
         Dir = DirTable[Random.Range(0, DirTable.Length)];
-
+        
         Vector3 angle = new Vector3();
 
         //回転しながら飛んでくるデブリなので初期の値をランダムにする
@@ -29,23 +31,23 @@ public class RockMove : MonoBehaviour {
         transform.eulerAngles = angle;
 
 
-	}
-	
-	// Update is called once per frame
+    }
+
+    // Update is called once per frame
     void Update()
     {
-        
+
         Vector3 nowPos = transform.position;
 
         //画面外の枠に当たったら反射するように向きを変える
         if (nowPos.x > 2.0f)
-            Dir = 270.0f + (270.0f - Dir);   
+            Dir = 270.0f + (270.0f - Dir);
         if (nowPos.x < -2.0f)
-            Dir = 270.0f + (270.0f - Dir);   
-           
+            Dir = 270.0f + (270.0f - Dir);
 
 
-        const float MoveSpeed = 0.05f;
+
+        const float MoveSpeed = 0.03f;
 
         //Y軸ではなくZ軸を使うため、sinはZ
         nowPos.x += Mathf.Cos(Dir * Mathf.Deg2Rad) * MoveSpeed;
@@ -57,9 +59,9 @@ public class RockMove : MonoBehaviour {
         Vector3 angle = transform.eulerAngles;
 
         //回転させるための加算
-        angle.x += 4.0f;
+        angle.x += 1.0f;
         //angle.y += 2.0f;
-        angle.z += 4.0f;
+        angle.z += 1.0f;
 
         //上限設定
         if (angle.x >= 360.0f) angle.x -= 360.0f;
@@ -75,7 +77,7 @@ public class RockMove : MonoBehaviour {
 
     void OnTriggerEnter(Collider collider)
     {
-        
+
         HP--;
 
 
@@ -86,7 +88,5 @@ public class RockMove : MonoBehaviour {
         }
 
     }
-
-
 
 }
